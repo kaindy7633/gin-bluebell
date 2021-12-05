@@ -1,5 +1,8 @@
-{"level":"INFO","time":"2021-12-04T13:00:06.730+0800","caller":"gin-basic-scaffold/main.go:76","msg":"Shutdown Server ..."}
-{"level":"INFO","time":"2021-12-04T13:00:06.735+0800","caller":"gin-basic-scaffold/main.go:84","msg":"Server exiting"}
-{"level":"ERROR","time":"2021-12-05T14:26:27.514+0800","caller":"mysql/mysql.go:25","msg":"connect DB failed","error":"dial tcp 127.0.0.1:3306: connect: connection refused"}
-{"level":"INFO","time":"2021-12-05T15:25:15.085+0800","caller":"gin-basic-scaffold/main.go:76","msg":"Shutdown Server ..."}
-{"level":"INFO","time":"2021-12-05T15:25:15.092+0800","caller":"gin-basic-scaffold/main.go:84","msg":"Server exiting"}
+{"level":"INFO","time":"2021-12-05T20:07:12.910+0800","caller":"logger/logger.go:69","msg":"/","status":200,"method":"GET","path":"/","query":"","ip":"::1","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.55 Safari/537.36","errors":"","cost":0.001014167}
+{"level":"INFO","time":"2021-12-05T20:07:13.041+0800","caller":"logger/logger.go:69","msg":"/favicon.ico","status":404,"method":"GET","path":"/favicon.ico","query":"","ip":"::1","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.55 Safari/537.36","errors":"","cost":0.000001708}
+{"level":"INFO","time":"2021-12-05T20:07:24.096+0800","caller":"gin-bluebell/main.go:87","msg":"Shutdown Server ..."}
+{"level":"INFO","time":"2021-12-05T20:07:24.100+0800","caller":"gin-bluebell/main.go:95","msg":"Server exiting"}
+{"level":"INFO","time":"2021-12-05T20:31:28.932+0800","caller":"gin-bluebell/main.go:88","msg":"Shutdown Server ..."}
+{"level":"INFO","time":"2021-12-05T20:31:28.937+0800","caller":"gin-bluebell/main.go:96","msg":"Server exiting"}
+{"level":"INFO","time":"2021-12-05T20:37:23.770+0800","caller":"gin-bluebell/main.go:87","msg":"Shutdown Server ..."}
+{"level":"INFO","time":"2021-12-05T20:37:23.775+0800","caller":"gin-bluebell/main.go:95","msg":"Server exiting"}

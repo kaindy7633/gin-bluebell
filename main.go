@@ -6,6 +6,7 @@ import (
 	"gin-bluebell/dao/mysql"
 	"gin-bluebell/dao/redis"
 	"gin-bluebell/logger"
+	"gin-bluebell/pkg/snowflake"
 	"gin-bluebell/routes"
 	"gin-bluebell/settings"
 	"log"
@@ -23,12 +24,12 @@ import (
 
 func main() {
 	// 通过执行参数指定配置文件
-	if len(os.Args) < 2 {
-		return
-	}
+	// if len(os.Args) < 2 {
+	// 	return
+	// }
 
 	// 1. 加载配置
-	if err := settings.Init(os.Args[1]); err != nil {
+	if err := settings.Init(); err != nil {
 		fmt.Printf("init settings failed, err: %v\n", err)
 		return
 	}
@@ -53,6 +54,12 @@ func main() {
 		return
 	}
 	defer redis.Close()
+
+	// 初始化雪花算法 ID 生成函数
+	if err := snowflake.Init(settings.Conf.StartTime, settings.Conf.MachineID); err != nil {
+		fmt.Printf("init snowflake failed, err: %v\n", err)
+		return
+	}
 
 	// 5. 注册路由
 	r := routes.Setup()
