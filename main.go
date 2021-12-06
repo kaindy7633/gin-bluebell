@@ -9,6 +9,7 @@ import (
 	"gin-bluebell/pkg/snowflake"
 	"gin-bluebell/routes"
 	"gin-bluebell/settings"
+	"gin-bluebell/utils"
 	"log"
 	"net/http"
 	"os"
@@ -58,6 +59,12 @@ func main() {
 	// 初始化雪花算法 ID 生成函数
 	if err := snowflake.Init(settings.Conf.StartTime, settings.Conf.MachineID); err != nil {
 		fmt.Printf("init snowflake failed, err: %v\n", err)
+		return
+	}
+
+	// 初始化翻译器
+	if err := utils.InitTrans("zh"); err != nil {
+		fmt.Printf("init validator trans failed, err: %v\n", err)
 		return
 	}
 
