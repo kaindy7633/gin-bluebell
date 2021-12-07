@@ -13,6 +13,8 @@ func Setup() *gin.Engine {
 
 	// 注册业务路由
 	r.POST("/signup", controllers.SignUpHandler)
+	// 登录路由
+	r.POST("/login", controllers.LoginHandler)
 
 	return r
 }

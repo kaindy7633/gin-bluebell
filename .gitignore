@@ -3,6 +3,7 @@
 # Log
 storage/*
 *.log
+web_app.log
 
 # Editor directories and files
 .idea
