@@ -8,18 +8,22 @@ import (
 )
 
 // 全局变量，保存程序的所有配置信息
-var Conf = new(AppConfig)
+var Conf = new(GlobalConfig)
 
 // 定义 struct 映射配置信息
-type AppConfig struct {
-	Name             string `mapstructure:"name"`
-	Mode             string `mapstructure:"mode"`
-	Version          string `mapstructure:"version"`
-	Port             int    `mapstructure:"port"`
+type GlobalConfig struct {
+	*AppConfig       `mapstructure:"app"`
 	*LogConfig       `mapstructure:"log"`
 	*MySQLConfig     `mapstructure:"mysql"`
 	*RedisConfig     `mapstructure:"redis"`
 	*SnowFlakeConfig `mapstructure:"snowflake"`
+}
+
+type AppConfig struct {
+	Name    string `mapstructure:"name"`
+	Mode    string `mapstructure:"mode"`
+	Version string `mapstructure:"version"`
+	Port    int    `mapstructure:"port"`
 }
 
 type LogConfig struct {
