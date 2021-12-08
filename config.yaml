@@ -1,7 +1,7 @@
 app:
   name: "gin-bluebell"
   mode: "dev"
-  port: 8888
+  port: 8088
   version: "0.1.0"
 log:
   level: "debug"

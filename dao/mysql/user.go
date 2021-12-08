@@ -7,6 +7,12 @@ import (
 	"gin-bluebell/utils"
 )
 
+var (
+	ErrorUserExist       = errors.New("用户已存在")
+	ErrorUserNotExist    = errors.New("用户不存在")
+	ErrorInvalidPassword = errors.New("用户名或密码错误")
+)
+
 // CheckUserExist 判断用户是否存在
 func CheckUserExist(username string) (err error) {
 	sqlStr := `select count(user_id) from user where username = ?`
@@ -15,7 +21,7 @@ func CheckUserExist(username string) (err error) {
 		return err
 	}
 	if count > 0 {
-		return errors.New("用户已存在")
+		return ErrorUserExist
 	}
 	return
 }
@@ -37,14 +43,14 @@ func Login(user *models.User) (err error) {
 	err = db.Get(user, sqlStr, user.Username)
 	// 判断用户是否存在
 	if err == sql.ErrNoRows {
-		return errors.New("用户不存在")
+		return ErrorUserNotExist
 	}
 	if err != nil {
 		return err
 	}
 	// 判断密码是否正确
 	if user.Password != utils.EncryptString(_password) {
-		return errors.New("密码错误")
+		return ErrorInvalidPassword
 	}
 	return
 
