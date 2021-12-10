@@ -43,3 +43,8 @@
 {"level":"INFO","time":"2021-12-09T20:50:17.056+0800","caller":"logger/logger.go:81","msg":"/ping","status":200,"method":"GET","path":"/ping","query":"","ip":"::1","user-agent":"PostmanRuntime/7.28.4","errors":"","cost":0.000129666}
 {"level":"INFO","time":"2021-12-09T21:13:09.045+0800","caller":"gin-bluebell/main.go:95","msg":"Shutdown Server ..."}
 {"level":"INFO","time":"2021-12-09T21:13:09.049+0800","caller":"gin-bluebell/main.go:103","msg":"Server exiting"}
+{"level":"INFO","time":"2021-12-09T21:50:25.191+0800","caller":"gin-bluebell/main.go:95","msg":"Shutdown Server ..."}
+{"level":"INFO","time":"2021-12-09T21:50:25.196+0800","caller":"gin-bluebell/main.go:103","msg":"Server exiting"}
+{"level":"INFO","time":"2021-12-09T21:50:32.183+0800","caller":"logger/logger.go:81","msg":"/login","status":200,"method":"POST","path":"/login","query":"","ip":"::1","user-agent":"PostmanRuntime/7.28.4","errors":"","cost":0.009900666}
+{"level":"ERROR","time":"2021-12-09T21:51:20.689+0800","caller":"controllers/user.go:42","msg":"logic.Signup failed","error":"用户已存在"}
+{"level":"INFO","time":"2021-12-09T21:51:20.689+0800","caller":"logger/logger.go:81","msg":"/signup","status":200,"method":"POST","path":"/signup","query":"","ip":"::1","user-agent":"PostmanRuntime/7.28.4","errors":"","cost":0.004039708}
