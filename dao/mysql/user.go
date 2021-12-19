@@ -2,16 +2,15 @@ package mysql
 
 import (
 	"database/sql"
-	"errors"
 	"gin-bluebell/models"
 	"gin-bluebell/utils"
 )
 
-var (
-	ErrorUserExist       = errors.New("用户已存在")
-	ErrorUserNotExist    = errors.New("用户不存在")
-	ErrorInvalidPassword = errors.New("用户名或密码错误")
-)
+// var (
+// 	ErrorUserExist       = errors.New("用户已存在")
+// 	ErrorUserNotExist    = errors.New("用户不存在")
+// 	ErrorInvalidPassword = errors.New("用户名或密码错误")
+// )
 
 // CheckUserExist 判断用户是否存在
 func CheckUserExist(username string) (err error) {

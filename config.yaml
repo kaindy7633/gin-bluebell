@@ -26,3 +26,5 @@ redis:
 snowflake:
   start_time: "2021-12-05"
   machine_id: 1
+auth:
+  jwt_expire: 8790
