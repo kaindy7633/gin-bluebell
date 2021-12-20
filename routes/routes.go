@@ -23,8 +23,13 @@ func Setup() *gin.Engine {
 	// 应用 JWT 认证中间件
 	v1.Use(middleware.JWTAuthMiddleware())
 	{
+		// 社区分类
 		v1.GET("/community", controllers.CommunityHandler)
 		v1.GET("/community/:id", controllers.CommunityDetailHandler)
+
+		// 帖子
+		v1.POST("/post", controllers.CreatePostHandler)
+		v1.GET("/post/:id", controllers.GetPostDetailHandler)
 	}
 
 	r.NoRoute(func(c *gin.Context) {
