@@ -2,6 +2,7 @@ package controllers
 
 import (
 	"errors"
+	"fmt"
 	"gin-bluebell/common"
 	"gin-bluebell/dao/mysql"
 	"gin-bluebell/logic"
@@ -74,7 +75,7 @@ func LoginHandler(c *gin.Context) {
 		return
 	}
 	// 2. 业务逻辑处理
-	aToken, rToken, err := logic.Login(p)
+	user, err := logic.Login(p)
 	if err != nil {
 		zap.L().Error("logic.Login failed,", zap.Error(err))
 		if errors.Is(err, mysql.ErrorUserNotExist) {
@@ -85,8 +86,10 @@ func LoginHandler(c *gin.Context) {
 		return
 	}
 	// 3. 返回响应
-	common.ResponseSuccess(c, map[string]string{
-		"access_token":  aToken,
-		"refresh_token": rToken,
+	common.ResponseSuccess(c, gin.H{
+		"user_id":       fmt.Sprintf("%d", user.UserID), // 这里的值在前端会出现失真的问题
+		"username":      user.Username,
+		"access_token":  user.AccessToken,
+		"refresh_token": user.RefreshToken,
 	})
 }
