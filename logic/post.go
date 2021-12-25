@@ -2,6 +2,7 @@ package logic
 
 import (
 	"gin-bluebell/dao/mysql"
+	"gin-bluebell/dao/redis"
 	"gin-bluebell/models"
 	"gin-bluebell/pkg/snowflake"
 
@@ -12,7 +13,15 @@ func CreatePost(p *models.Post) (err error) {
 	// 1. 使用雪花算法创建 post id
 	p.ID = snowflake.GenID()
 	// 2. 保存到数据库并返回
-	return mysql.CreatePost(p)
+	err = mysql.CreatePost(p)
+	if err != nil {
+		return err
+	}
+	err = redis.CreatePost(p.ID)
+	if err != nil {
+		return err
+	}
+	return
 }
 
 func GetPostDetailById(pid int64) (data *models.ApiPostDetail, err error) {
