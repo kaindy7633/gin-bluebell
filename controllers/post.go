@@ -1,3 +1,10 @@
+/**
+ * @Description: LiuZhen
+ * @Author: LiuZhen
+ * @Date: 2021-12-Sa 05:25:47
+ * @Last Modified by: LiuZhen
+ * @Last Modified time: 2021-12-Sa 05:25:47
+ */
 package controllers
 
 import (
@@ -82,6 +89,36 @@ func GetPostListHandler(c *gin.Context) {
 
 	// 获取数据
 	data, err := logic.GetPostList(page, pageSize)
+	if err != nil {
+		zap.L().Error("logic.GetPostList failed", zap.Error(err))
+		common.ResponseError(c, common.CodeServerBusy)
+		return
+	}
+
+	// 返回响应
+	common.ResponseSuccess(c, data)
+}
+
+/*
+ * 通过获取参数实现各种条件下获取不同的列表
+ * 如评分排序列表和创建时间排序列表
+ */
+func GetPostListHandlerByParams(c *gin.Context) {
+	// 获取分页参数
+	p := &models.ParamPostList{
+		Page:     1,
+		PageSize: 10,
+		Order:    models.OrderTime,
+	}
+
+	if err := c.ShouldBindJSON(p); err != nil {
+		zap.L().Error("GetPostListHandlerByParams with invalid params", zap.Error(err))
+		common.ResponseError(c, common.CodeInvalidParam)
+		return
+	}
+
+	// 获取数据
+	data, err := logic.GetPostListByParams(p)
 	if err != nil {
 		zap.L().Error("logic.GetPostList failed", zap.Error(err))
 		common.ResponseError(c, common.CodeServerBusy)

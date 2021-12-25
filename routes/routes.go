@@ -31,6 +31,9 @@ func Setup() *gin.Engine {
 		v1.POST("/post", controllers.CreatePostHandler)
 		v1.GET("/post/:id", controllers.GetPostDetailHandler)
 		v1.GET("/posts", controllers.GetPostListHandler)
+		// 对获取帖子的接口进行扩展，加入根据参数进行筛选排序的功能
+		// 如：按评分排序获取、按创建时间获取
+		v1.GET("/posts_sort", controllers.GetPostListHandlerByParams)
 
 		// 投票
 		v1.POST("/vote", controllers.PostVoteController)
