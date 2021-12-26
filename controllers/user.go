@@ -15,7 +15,17 @@ import (
 	"gin-bluebell/utils"
 )
 
-// SingUpHandler 处理注册请求的函数
+// SingUpHandler 处理注册请求
+// @Summary 处理注册请求
+// @Description 处理注册请求
+// @Tags 用户相关
+// @Accept application/json
+// @Produce appliction/json
+// @Param Authorization header string false "Bearer 用户令牌"
+// @Param object query models.ParamSignUp true "注册参数"
+// @Security ApiKeyAuth
+// @Success 200 {object} models.CommonResponse
+// @router /signup [post]
 func SignUpHandler(c *gin.Context) {
 	// 1. 获取参数和参数校验
 	p := new(models.ParamSignUp)

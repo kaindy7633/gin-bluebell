@@ -1,0 +1,90 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "gin-bluebell 基于Gin框架的Web通用脚手架模板",
+        "title": "gin-bluebell api docs",
+        "termsOfService": "http://swagger.io/terms/",
+        "contact": {
+            "name": "Liuzhen",
+            "url": "http://www.swagger.io/support",
+            "email": "support@swagger.io"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/license-2.0.html"
+        },
+        "version": "0.1.0"
+    },
+    "host": "127.0.0.1:8088",
+    "basePath": "/api/v1",
+    "paths": {
+        "/signup": {
+            "post": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "处理注册请求",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "appliction/json"
+                ],
+                "tags": [
+                    "用户相关"
+                ],
+                "summary": "处理注册请求",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Bearer 用户令牌",
+                        "name": "Authorization",
+                        "in": "header"
+                    },
+                    {
+                        "type": "string",
+                        "name": "password",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "re_password",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "username",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/models.CommonResponse"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "models.CommonResponse": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer"
+                },
+                "data": {},
+                "msg": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}

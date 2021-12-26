@@ -23,6 +23,20 @@ import (
 
 // Go Web 开发通用脚手架模板
 
+// @title gin-bluebell api docs
+// @version 0.1.0
+// @description gin-bluebell 基于Gin框架的Web通用脚手架模板
+// @termsOfService http://swagger.io/terms/
+
+// @contact.name Liuzhen
+// @contact.url http://www.swagger.io/support
+// @contact.email support@swagger.io
+
+// @license.name Apache 2.0
+// @license.url http://www.apache.org/licenses/license-2.0.html
+
+// @host 127.0.0.1:8088
+// @BasePath /api/v1
 func main() {
 	// 通过执行参数指定配置文件
 	// if len(os.Args) < 2 {

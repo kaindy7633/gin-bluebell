@@ -6,12 +6,26 @@ import (
 	"gin-bluebell/middleware"
 	"net/http"
 
+	_ "gin-bluebell/docs"
+
+	gs "github.com/swaggo/gin-swagger"
+	"github.com/swaggo/gin-swagger/swaggerFiles"
+
 	"github.com/gin-gonic/gin"
 )
 
 func Setup() *gin.Engine {
 	r := gin.New()
 	r.Use(logger.GinLogger(), logger.GinRecovery(true))
+
+	// swagger route
+	r.GET("/swagger/*any", gs.WrapHandler(swaggerFiles.Handler))
+	/**
+	 * gin-swagger同时还提供了DisablingWrapHandler函数，
+	 * 方便我们通过设置某些环境变量来禁用Swagger。例如：
+	 * r.GET("/swagger/*any", gs.DisablingWrapHandler(swaggerFiles.Handler, "NAME_OF_ENV_VARIABLE"))
+	 * 此时如果将环境变量NAME_OF_ENV_VARIABLE设置为任意值，则/swagger/*any将返回404响应
+	 */
 
 	// 创建 v1 版本的路由
 	v1 := r.Group("/api/v1")
